@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xchat - Windows XP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+</head>
+<body>
+
+    <div class="desktop">
+
+        <div id="auth-window" class="xp-window">
+            <div class="title-bar">
+                <div class="title-bar-text">🎒 Log On to Xchat</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p class="welcome-text">To begin your live communication experience, please sign in or register an account.</p>
+                <div class="field-row-stacked">
+                    <label for="username">Username / Email</label>
+                    <input id="username" type="text" placeholder="e.g., CoolUser2003" />
+                </div>
+                <div class="field-row-stacked">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" />
+                </div>
+                <div class="auth-buttons">
+                    <button id="btn-login" class="xp-btn">Log In</button>
+                    <button id="btn-signup" class="xp-btn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-window" class="xp-window hidden">
+            <div class="title-bar">
+                <div class="title-bar-text">💬 Xchat Messenger Pro v1.0</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button id="btn-logout" aria-label="Close">X</button>
+                </div>
+            </div>
+            
+            <div class="menu-bar">
+                <span><u>F</u>ile</span>
+                <span><u>E</u>dit</span>
+                <span><u>A</u>ctions</span>
+                <span><u>H</u>elp</span>
+            </div>
+
+            <div class="window-body main-layout">
+                <div class="sidebar">
+                    <fieldset>
+                        <legend>My Identity</legend>
+                        <div id="my-peer-id" class="status-box">Your Call ID: Loading...</div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Friends & Live Calls</legend>
+                        <div class="field-row">
+                            <input id="friend-id-input" type="text" placeholder="Enter friend's Call ID" />
+                        </div>
+                        <div class="sidebar-buttons">
+                            <button id="btn-add-friend" class="xp-btn">Add Friend</button>
+                            <button id="btn-call" class="xp-btn call-btn">📹 Start Video</button>
+                        </div>
+                        <ul id="friends-list" class="xp-listbox">
+                            </ul>
+                    </fieldset>
+                </div>
+
+                <div class="content-area">
+                    <div id="video-panel" class="video-container hidden">
+                        <div class="video-box">
+                            <label>Remote Peer</label>
+                            <video id="remote-video" autoplay playsinline></video>
+                        </div>
+                        <div class="video-box">
+                            <label>You</label>
+                            <video id="local-video" autoplay muted playsinline></video>
+                        </div>
+                        <button id="btn-hangup" class="xp-btn error-btn">Hang Up</button>
+                    </div>
+
+                    <div class="tabs">
+                        <button id="tab-chat" class="tab-btn active">Live Chat Room</button>
+                        <button id="tab-feed" class="tab-btn">Social Feed & Video Posts</button>
+                    </div>
+
+                    <div id="view-chat" class="tab-view">
+                        <div id="chat-messages" class="xp-textbox-view"></div>
+                        <div class="chat-input-row">
+                            <input id="chat-input" type="text" placeholder="Type a message..." />
+                            <button id="btn-send" class="xp-btn">Send</button>
+                        </div>
+                    </div>
+
+                    <div id="view-feed" class="tab-view hidden">
+                        <div class="create-post-box">
+                            <textarea id="post-text-input" placeholder="What's on your mind?"></textarea>
+                            <div class="field-row">
+                                <label for="post-video-url">Video Post URL (mp4):</label>
+                                <input id="post-video-url" type="text" placeholder="https://example.com/video.mp4" />
+                            </div>
+                            <button id="btn-post" class="xp-btn">Publish Post</button>
+                        </div>
+                        <div id="feed-container" class="feed-list">
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="taskbar">
+        <button class="start-button">
+            <span class="start-text">start</span>
+        </button>
+        <div class="taskbar-divider"></div>
+        <div class="active-tasks">
+            <div class="task-tab">Xchat Messenger</div>
+        </div>
+        <div class="system-tray">
+            <span id="system-time">12:00 PM</span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
